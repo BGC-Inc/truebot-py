@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+SS
+config.py
+run_truebot.bat
