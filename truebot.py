@@ -1,6 +1,6 @@
 """Implementation of the main functionality of TrueBot"""
-from discord import Game
 from discord.ext.commands import Bot
+import discord
 import config
 
 TRUEBOT = Bot(command_prefix=config.BOT_PREFIX)
@@ -9,7 +9,7 @@ TRUEBOT = Bot(command_prefix=config.BOT_PREFIX)
 @TRUEBOT.event
 async def on_ready():
     """Function to run when the bot comes online"""
-    await TRUEBOT.change_presence(game=Game(name="with humans"))
+    await TRUEBOT.change_presence(activity=discord.Activity(name="with humans", type=0))
     print("Logged in as " + TRUEBOT.user.name)
 
 # pylint doesn't like us catching all exceptions here, tough luck

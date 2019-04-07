@@ -3,7 +3,7 @@ import random
 from discord.ext import commands
 
 
-class Memes():
+class Memes(commands.Cog):
     """All the many memes we have for our beautiful bot"""
     def __init__(self, bot):
         self.bot = bot
@@ -11,9 +11,8 @@ class Memes():
     @commands.command(name='8ball',
                       brief="Answers from the beyond.",
                       description="Answers a yes/no question.",
-                      aliases=['eight_ball', 'eightball', '8-ball'],
-                      pass_context=True)
-    async def eight_ball(self, context):
+                      aliases=['eight_ball', 'eightball', '8-ball'])
+    async def eight_ball(self, ctx):
         """Magic eight ball"""
         possible_responses = [
             'That is a resounding no',
@@ -22,44 +21,43 @@ class Memes():
             'It is quite possible',
             'Definitely',
         ]
-        await self.bot.say(random.choice(possible_responses) + ", " + context.message.author.mention)
+        await ctx.send(random.choice(possible_responses) + ", " + ctx.message.author.mention)
 
     @commands.command(name="ihop",
                       brief="I'm down")
-    async def ihop(self):
+    async def ihop(self, ctx):
         """Zach is also down"""
-        await self.bot.say("I'm down")
+        await ctx.send("I'm down")
 
     @commands.command(name="ihob",
                       brief="I'm qown")
-    async def ihob(self):
+    async def ihob(self, ctx):
         """Zach is also qown"""
-        await self.bot.say("I'm qown")
+        await ctx.send("I'm qown")
 
     @commands.command(name="dammit",
                       brief="Slurpee",
                       aliases=["damnit", "dammitslurpee", "damnitslurpee"])
-    async def dammit_slurpee(self):
+    async def dammit_slurpee(self, ctx):
         """Dollar Sign Dammit Slurpee"""
-        await self.bot.say("$dammitSlurpee")
+        await ctx.send("$dammitSlurpee")
 
     @commands.command(name="false",
                       brief="r/programmerhumor")
-    async def funny_because(self):
+    async def funny_because(self, ctx):
         """Get it? Cause ! means not in programmer speak"""
-        await self.bot.say("It's funny because it's true")
+        await ctx.send("It's funny because it's true")
 
     @commands.command(name="true",
                       brief="I like Star Wars too")
-    async def thats_impossible(self):
+    async def thats_impossible(self, ctx):
         """The quote is actually \"No, I am your father\""""
-        await self.bot.say("No. No! That's not true! That's impossible!")
+        await ctx.send("No. No! That's not true! That's impossible!")
 
     @commands.command(name="done",
                       brief="For when you complete your run",
-                      description="But that time is impossible!",
-                      pass_context=True)
-    async def dot_done(self, context):
+                      description="But that time is impossible!")
+    async def dot_done(self, ctx):
         """Randomly display a meme time from speedrunning history"""
         meme_times = [
             '00:05.51',
@@ -70,7 +68,7 @@ class Memes():
             '47:35',
             '13:37.69',
         ]
-        await self.bot.say(context.message.author.mention + "completed their run in " + random.choice(meme_times) + "!")
+        await ctx.send(ctx.message.author.mention + "completed their run in " + random.choice(meme_times) + "!")
 
 
 def setup(bot):
